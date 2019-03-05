@@ -1,0 +1,26 @@
+version: '3'
+
+volumes:
+  chain:
+  index:
+  logs:
+  plugins:
+
+services:
+    
+  seed:
+    image: cron/cron-node
+    restart: always
+    networks:
+      neo:
+    ports:
+      - 10332:10332
+      - 10333:10333
+    volumes:
+      - chain:/neo-cli/Chain_040AF90A
+      - index:/neo-cli/Index_040AF90A
+      - logs:/neo-cli/ApplicationLogs_040AF90A
+      - plugins:/neo-cli/Plugins
+networks:
+  neo:
+    external: true 
