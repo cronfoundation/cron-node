@@ -9,14 +9,21 @@
       "0266fad048f713b12cf54008bf73e4310b70bdb049873c9126008e512f167b2612",
       "0326ab6643f8b687d5b2b2a6fb5d593c4a6e35cf0f91c80efaf4c87590f872c70b",
       "021b0ca082ebc1452c10e794d18ad6c78345ff0b00777a5b842cfa925f3d3b72c4",
-      "0253f9cc6de7bebb0264dd3225f4c71a180e0c9efd8736cda70d4b05937e45a629"
+      "03b38d586b9f988e761f4b533a660a4dd7d45ef518d66927f73f26cd5cf438fb8c",
+      "0320388c47ee0a0613e37f7ee2623a70e1a3a13683802391c8ea4fe51db53f176c",
+      "036b4a8c8fc7e44a007b0516ee85f3f4f86f0a5cce17498324813ccfdad2676e5d",
+      "037d3789b00e06c032e87d48980a058dd7d3f2643fb8891ab979a907136c3cb51a"
     ],
     "SeedList": [
       "seed1.cron.global:10333",
       "seed2.cron.global:10333",
       "seed3.cron.global:10333",
       "seed4.cron.global:10333",
-      "seed5.cron.global:10333"
+      "seed5.cron.global:10333",
+      "seed6.cron.global:10333",
+      "seed7.cron.global:10333",
+      "seed8.cron.global:10333",
+      "seed9.cron.global:10333"
     ],
     "SystemFee": {
       "EnrollmentTransaction": 1000,
