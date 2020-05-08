@@ -7,7 +7,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # https://docs.microsoft.com/en-us/dotnet/core/tools/telemetry#behavior
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 
-
 # Install system dependencies. always should be done in one line
 # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#run
 RUN apt-get update && apt-get install -y \
@@ -21,7 +20,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     apt-transport-https
 
-
 #RUN apt-get update && apt-get install -y apt-transport-https
 
 # Setup microsoft repositories
@@ -30,8 +28,6 @@ RUN mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 RUN apt-get update
 RUN apt-get install -y dotnet-sdk-2.2
-
-
 
 # APT cleanup to reduce image size
 RUN rm -rf /var/lib/apt/lists/*
@@ -43,9 +39,6 @@ RUN git clone https://github.com/cronfoundation/neo-cli /neo-cli-src
 WORKDIR /neo-cli-src
 RUN dotnet restore
 RUN dotnet publish -c Release -o /neo-cli
-
-
-
 
 # Plugin setup build from source
 RUN git clone https://github.com/cronfoundation/neo-plugins.git /neo-plugins
@@ -72,10 +65,27 @@ WORKDIR /neo-plugins/RpcSecurity
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
+# CoreMetrics plugin build
+WORKDIR /neo-plugins/CoreMetrics
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
+# ApplicationLogs plugin build
+WORKDIR /neo-plugins/ApplicationLogs
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
+
+# RpcWallet plugin build
+WORKDIR /neo-plugins/RpcWallet
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
+
+# RpcNep5Tracker plugin build
+WORKDIR /neo-plugins/RpcNep5Tracker
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 WORKDIR /neo-cli
-
 
 # Copy config files
 COPY ./config/config.json /neo-cli/config.json
@@ -94,5 +104,3 @@ RUN chmod +x /neo-cli/start_consensus_node.sh
 
 # Run entrypoint script
 ENTRYPOINT ["/neo-cli/entrypoint.sh" ]
-
-
