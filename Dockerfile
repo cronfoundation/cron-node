@@ -72,27 +72,10 @@ WORKDIR /neo-plugins/RpcSecurity
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
-# CoreMetrics plugin build
-WORKDIR /neo-plugins/CoreMetrics
-#RUN dotnet restore
-RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
-# ApplicationLogs plugin build
-WORKDIR /neo-plugins/ApplicationLogs
-#RUN dotnet restore
-RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
-
-# RpcWallet plugin build
-WORKDIR /neo-plugins/RpcWallet
-#RUN dotnet restore
-RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
-
-# RpcNep5Tracker plugin build
-WORKDIR /neo-plugins/RpcNep5Tracker
-#RUN dotnet restore
-RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 WORKDIR /neo-cli
+
 
 # Copy config files
 COPY ./config/config.json /neo-cli/config.json
