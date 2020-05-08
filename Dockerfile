@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     libssl-dev \
     apt-transport-https
-    
-    
+
+
 #RUN apt-get update && apt-get install -y apt-transport-https
 
 # Setup microsoft repositories
@@ -72,16 +72,33 @@ WORKDIR /neo-plugins/RpcSecurity
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
+# CoreMetrics plugin build
+WORKDIR /neo-plugins/CoreMetrics
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
+# ApplicationLogs plugin build
+WORKDIR /neo-plugins/ApplicationLogs
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
+
+# RpcWallet plugin build
+WORKDIR /neo-plugins/RpcWallet
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
+
+# RpcNep5Tracker plugin build
+WORKDIR /neo-plugins/RpcNep5Tracker
+#RUN dotnet restore
+RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 WORKDIR /neo-cli
-
 
 # Copy config files
 COPY ./config/config.json /neo-cli/config.json
 COPY ./config/protocol.json /neo-cli/protocol.json
 
-# Copy wallet 
+# Copy wallet
 # COPY ./config/wallet.json /neo-cli/wallet.json
 
 # Copy scripts
