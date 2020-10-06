@@ -29,7 +29,6 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-
 sudo apt-get update && sudo apt-get install -y docker-ce
 ~~~
 
@@ -126,3 +125,9 @@ Config files will be copied to docker image in build stage
 
 Edit config/config.json
 Edit config/protocol.json
+
+## Auth for RPC
+To add RPC authentication capabilities, copy the contents of the file  `config/rpc_security_conf.json` here
+ `/Plugins/RpcSecurity/config.json`. 
+  In this case, the request to the node will change to this
+ `curl -d '{"jsonrpc": "2.0", "method": "getblockcount", "params": [], "id": 5}' admin:123@127.0.0.1:10332`
