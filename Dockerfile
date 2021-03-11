@@ -41,47 +41,47 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o /neo-cli
 
 # Plugin setup build from source
-RUN git clone https://github.com/cronfoundation/neo-plugins.git /neo-plugins
+RUN git clone https://github.com/cronfoundation/cron-plugins.git /cron-plugins
 
 # remove unwanted plugins
-# RUN rm -rf /neo-plugins/SimplePolicy.UnitTests
-# RUN rm -rf /neo-plugins/ApplicationLogs
-# RUN rm -rf /neo-plugins/ImportBlocks
-# RUN rm -rf /neo-plugins/RpcSecurity
-# RUN rm -rf /neo-plugins/StatesDumper
+# RUN rm -rf /cron-plugins/SimplePolicy.UnitTests
+# RUN rm -rf /cron-plugins/ApplicationLogs
+# RUN rm -rf /cron-plugins/ImportBlocks
+# RUN rm -rf /cron-plugins/RpcSecurity
+# RUN rm -rf /cron-plugins/StatesDumper
 
 # SimplePolicy plugin build
-WORKDIR /neo-plugins/SimplePolicy
+WORKDIR /cron-plugins/SimplePolicy
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # ImportBlocks plugin build
-WORKDIR /neo-plugins/ImportBlocks
+WORKDIR /cron-plugins/ImportBlocks
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # RpcSecurity plugin build
-WORKDIR /neo-plugins/RpcSecurity
+WORKDIR /cron-plugins/RpcSecurity
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # CoreMetrics plugin build
-WORKDIR /neo-plugins/CoreMetrics
+WORKDIR /cron-plugins/CoreMetrics
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # ApplicationLogs plugin build
-WORKDIR /neo-plugins/ApplicationLogs
+WORKDIR /cron-plugins/ApplicationLogs
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # RpcWallet plugin build
-WORKDIR /neo-plugins/RpcWallet
+WORKDIR /cron-plugins/RpcWallet
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
 # RpcNep5Tracker plugin build
-WORKDIR /neo-plugins/RpcNep5Tracker
+WORKDIR /cron-plugins/RpcNep5Tracker
 #RUN dotnet restore
 RUN dotnet build --framework netstandard2.0 -o /neo-cli/Plugins
 
