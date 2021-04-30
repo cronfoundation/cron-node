@@ -34,14 +34,14 @@ RUN rm -rf /var/lib/apt/lists/*
 
 
 # neo setup: clone and install dependencies
-RUN git clone https://github.com/cronfoundation/neo-cli /neo-cli-src
+RUN git clone https://github.com/cronfoundation/Node-cli-of-the-Cronium-blockchain-4.0 /neo-cli-src
 
 WORKDIR /neo-cli-src
 RUN dotnet restore
 RUN dotnet publish -c Release -o /neo-cli
 
 # Plugin setup build from source
-RUN git clone https://github.com/cronfoundation/cron-plugins.git /cron-plugins
+RUN git clone https://github.com/cronfoundation/Plugins-of-the-Cronium-blockchain-4.0.git /cron-plugins
 
 # remove unwanted plugins
 # RUN rm -rf /cron-plugins/SimplePolicy.UnitTests
